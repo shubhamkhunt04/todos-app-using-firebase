@@ -7,7 +7,7 @@ const addTodo = functions.httpsCallable('addTodo');
 
 const Todos = () => {
   const [todo, setTodo] = useState('');
-  const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`);
+  const todosRef = firestore.collection(`todos`);
   const [todos] = useCollectionData(todosRef, { idField: 'id' });
 
   const signOut = () => auth.signOut();
@@ -30,9 +30,9 @@ const Todos = () => {
 
   return (
     <>
-      <header>
+      {/* <header>
         <button onClick={signOut}>Sign Out</button>
-      </header>
+      </header> */}
       <main>
         <form onSubmit={onSubmitTodo}>
           <input
@@ -50,7 +50,7 @@ const Todos = () => {
 };
 
 const Todo = ({ id, complete, text }) => {
-  const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`);
+  const todosRef = firestore.collection(`todos`);
   const onCompleteTodo = (id, complete) =>
     todosRef.doc(id).set({ complete: !complete }, { merge: true });
 

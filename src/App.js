@@ -16,9 +16,10 @@ const SignIn = () => (
 );
 
 const App = () => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
 
-  return user ? <Todos /> : <SignIn />;
+  // return user ? <Todos /> : <SignIn />;
+  return <Todos/>
 };
 
 export default App;
